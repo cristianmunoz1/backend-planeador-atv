@@ -14,4 +14,5 @@ public interface DegreeService {
     boolean deleteDegree(long id);
 
     Degree updateDegree(long id, Degree degree);
+
 }

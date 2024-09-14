@@ -30,6 +30,7 @@ public class DegreeController {
 
     @GetMapping("/degree/{id}")
     public ResponseEntity<Degree> getDegreeById(@PathVariable("id") long id) {
+
         Degree degree = null;
         degree = degreeService.getDegreeById(id);
         return ResponseEntity.ok(degree);
@@ -37,6 +38,7 @@ public class DegreeController {
 
     @DeleteMapping("degree/{id}")
     public ResponseEntity<Map<String, Boolean>> deleteDegree(@PathVariable("id") long id) {
+
         boolean deleted = false;
         deleted = degreeService.deleteDegree(id);
         Map<String, Boolean> response= new HashMap<>();
