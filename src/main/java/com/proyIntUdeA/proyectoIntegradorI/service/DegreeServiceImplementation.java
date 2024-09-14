@@ -3,10 +3,11 @@ import com.proyIntUdeA.proyectoIntegradorI.entity.DegreeEntity;
 import com.proyIntUdeA.proyectoIntegradorI.model.Degree;
 import com.proyIntUdeA.proyectoIntegradorI.repository.DegreeRepository;
 import org.springframework.beans.BeanUtils;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@Service
 public class DegreeServiceImplementation implements DegreeService{
 
     private final DegreeRepository degreeRepository;
