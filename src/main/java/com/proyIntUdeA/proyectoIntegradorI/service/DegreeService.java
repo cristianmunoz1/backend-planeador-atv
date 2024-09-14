@@ -9,9 +9,9 @@ public interface DegreeService {
 
     List<Degree> getAllDegree();
 
-    Degree getDegreeById(String id);
+    Degree getDegreeById(long id);
 
-    boolean deleteDegree(String id);
+    boolean deleteDegree(long id);
 
-    Degree updateDegree(String id, Degree degree);
+    Degree updateDegree(long id, Degree degree);
 }
