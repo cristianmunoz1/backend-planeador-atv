@@ -22,3 +22,4 @@ public class DegreeEntity {
     public String degree_modality;
     public String degree_department;
 }
+
