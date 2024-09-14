@@ -1,8 +1,6 @@
 package com.proyIntUdeA.proyectoIntegradorI.entity;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,7 +15,8 @@ import lombok.Setter;
 @Table(name = "degree")
 public class DegreeEntity {
     @Id
-    public String degree_id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    public Long degree_id;
     public String degree_name;
     public String degree_modality;
     public String degree_department;

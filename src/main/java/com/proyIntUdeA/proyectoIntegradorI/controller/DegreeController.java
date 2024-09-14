@@ -29,14 +29,14 @@ public class DegreeController {
     }
 
     @GetMapping("/degree/{id}")
-    public ResponseEntity<Degree> getDegreeById(@PathVariable("id") String id) {
+    public ResponseEntity<Degree> getDegreeById(@PathVariable("id") Long id) {
         Degree degree = null;
         degree = degreeService.getDegreeById(id);
         return ResponseEntity.ok(degree);
     }
 
     @DeleteMapping("degree/{id}")
-    public ResponseEntity<Map<String, Boolean>> deleteDegree(@PathVariable("id") String id) {
+    public ResponseEntity<Map<String, Boolean>> deleteDegree(@PathVariable("id") Long id) {
         boolean deleted = false;
         deleted = degreeService.deleteDegree(id);
         Map<String, Boolean> response= new HashMap<>();
@@ -45,7 +45,7 @@ public class DegreeController {
     }
 
     @PutMapping("/degree/{id}")
-    public ResponseEntity<Degree> updateDegree(@PathVariable("id") String id, @RequestBody Degree degree) {
+    public ResponseEntity<Degree> updateDegree(@PathVariable("id") Long id, @RequestBody Degree degree) {
         degree = degreeService.updateDegree(id, degree);
         return ResponseEntity.ok(degree);
     }

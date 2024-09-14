@@ -34,7 +34,7 @@ public class DegreeServiceImplementation implements DegreeService{
     }
 
     @Override
-    public Degree getDegreeById(String id) {
+    public Degree getDegreeById(Long id) {
         DegreeEntity DegreeEntity = degreeRepository.findById(id).get();
         Degree degree = new Degree();
         BeanUtils.copyProperties(DegreeEntity, degree);
@@ -42,14 +42,14 @@ public class DegreeServiceImplementation implements DegreeService{
     }
 
     @Override
-    public boolean deleteDegree(String id) {
+    public boolean deleteDegree(Long id) {
         DegreeEntity degree = degreeRepository.findById(id).get();
         degreeRepository. delete(degree);
         return true;
     }
 
     @Override
-    public Degree updateDegree(String id, Degree degree) {
+    public Degree updateDegree(Long id, Degree degree) {
         DegreeEntity degreeEntity = degreeRepository.findById(id).get();
         degreeEntity.setDegree_name(degree.getDegree_name());
         degreeEntity.setDegree_modality(degree.getDegree_modality());
