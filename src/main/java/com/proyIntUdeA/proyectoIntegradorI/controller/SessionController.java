@@ -20,7 +20,7 @@ public class SessionController {
     }
 
     @GetMapping("/")
-    public List<Session> getAllSubjects() {
+    public List<Session> getAllSessions() {
         return sessionService.getAllSessions();
     }
 
@@ -41,7 +41,7 @@ public class SessionController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Session> updateSubject(@PathVariable("id") long id, @RequestBody Session session) {
+    public ResponseEntity<Session> updateSession(@PathVariable("id") long id, @RequestBody Session session) {
         session = sessionService.updateSession(id, session);
         return ResponseEntity.ok(session);
     }

@@ -3,12 +3,13 @@ package com.proyIntUdeA.proyectoIntegradorI.service;
 import com.proyIntUdeA.proyectoIntegradorI.entity.SessionEntity;
 import com.proyIntUdeA.proyectoIntegradorI.model.Session;
 import com.proyIntUdeA.proyectoIntegradorI.repository.SessionRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
+@AllArgsConstructor
 @Service
 public class SessionServiceImplementation implements SessionService{
 

@@ -1,15 +1,15 @@
 package com.proyIntUdeA.proyectoIntegradorI.service;
 
 import com.proyIntUdeA.proyectoIntegradorI.entity.SubjectEntity;
-import com.proyIntUdeA.proyectoIntegradorI.model.Person;
 import com.proyIntUdeA.proyectoIntegradorI.model.Subject;
 import com.proyIntUdeA.proyectoIntegradorI.repository.SubjectRepository;
 import org.springframework.beans.BeanUtils;
-
+import org.springframework.stereotype.Service;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@Service
 public class SubjectServiceImplementation implements SubjectService{
-
     private final SubjectRepository subjectRepository;
 
     public SubjectServiceImplementation(SubjectRepository subjectRepository) {
@@ -27,21 +27,34 @@ public class SubjectServiceImplementation implements SubjectService{
 
     @Override
     public List<Subject> getAllSubject() {
-        return null;
+        List<SubjectEntity> subjectEntities = subjectRepository.findAll();
+
+        return subjectEntities.stream().map(subjectEntity -> new Subject(
+                subjectEntity.getSubject_id(),
+                subjectEntity.getSubject_name())).collect(Collectors.toList());
     }
 
     @Override
     public Subject getSubjectById(long id) {
-        return null;
+        SubjectEntity subjectEntity = subjectRepository.findById(id).get();
+        Subject subject = new Subject();
+        BeanUtils.copyProperties(subjectEntity, subject);
+        return subject;
     }
 
     @Override
     public boolean deleteSubject(long id) {
-        return false;
+        SubjectEntity subject = subjectRepository.findById(id).get();
+        subjectRepository. delete(subject);
+        return true;
     }
 
     @Override
     public Subject updateSubject(long id, Subject subject) {
-        return null;
+        SubjectEntity subjectEntity = subjectRepository.findById(id).get();
+        subjectEntity.setSubject_name(subject.getSubject_name());
+
+        subjectRepository.save(subjectEntity);
+        return subject;
     }
 }
