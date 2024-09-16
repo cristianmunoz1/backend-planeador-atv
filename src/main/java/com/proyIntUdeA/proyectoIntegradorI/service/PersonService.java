@@ -15,4 +15,5 @@ public interface PersonService {
     boolean deletePerson(String id);
 
     Person updatePerson(String id, Person person);
+    List<Person> getAllTutors();
 }

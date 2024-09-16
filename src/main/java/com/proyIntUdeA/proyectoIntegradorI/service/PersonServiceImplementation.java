@@ -10,6 +10,8 @@ import com.proyIntUdeA.proyectoIntegradorI.entity.PersonEntity;
 import com.proyIntUdeA.proyectoIntegradorI.model.Person;
 import com.proyIntUdeA.proyectoIntegradorI.repository.PersonRepository;
 
+import static java.util.Arrays.stream;
+
 @Service
 public class PersonServiceImplementation implements PersonService {
 
@@ -32,17 +34,18 @@ public class PersonServiceImplementation implements PersonService {
         List<PersonEntity> personEntities = personRepository.findAll();
 
         List<Person> persons = personEntities.stream().map(personEntity -> new Person(
-                personEntity.getUser_id_type(),
                 personEntity.getUser_id(),
+                personEntity.getUser_id_type(),
                 personEntity.getUser_name(),
                 personEntity.getUser_lastname(),
-                personEntity.getUser_city(),
-                personEntity.getUser_department(),
                 personEntity.getUser_email(),
+                personEntity.getUser_password(),
                 personEntity.getUser_phone(),
-                personEntity.getUser_role(),
+                personEntity.getUser_department(),
+                personEntity.getUser_city(),
                 personEntity.getUser_state(),
-                personEntity.getUser_password())).collect(Collectors.toList());
+                personEntity.getUser_role()
+                )).collect(Collectors.toList());
         return persons;
     }
 
@@ -77,5 +80,14 @@ public class PersonServiceImplementation implements PersonService {
 
         personRepository.save(personEntity);
         return person;
+    }
+
+    public List<Person> getAllTutors(){
+        List<Person> persons = getAllPersons();
+        List<Person> tutors = persons
+                .stream()
+                .filter(person -> person.getUser_role().equals("Tutor"))
+                .collect(Collectors.toList());
+        return tutors;
     }
 }
