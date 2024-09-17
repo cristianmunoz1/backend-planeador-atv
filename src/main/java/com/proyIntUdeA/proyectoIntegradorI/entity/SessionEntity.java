@@ -1,5 +1,6 @@
 package com.proyIntUdeA.proyectoIntegradorI.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
@@ -18,6 +19,7 @@ public class SessionEntity {
     private String tutor_id;
     private long subject_id;
     private String class_topics;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd'T'HH:mm:ss")
     private Date class_date;
     private float class_rate;
 }
