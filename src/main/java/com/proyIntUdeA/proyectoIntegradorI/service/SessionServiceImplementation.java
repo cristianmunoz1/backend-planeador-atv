@@ -2,7 +2,9 @@ package com.proyIntUdeA.proyectoIntegradorI.service;
 
 import com.proyIntUdeA.proyectoIntegradorI.entity.SessionEntity;
 import com.proyIntUdeA.proyectoIntegradorI.model.Session;
+import com.proyIntUdeA.proyectoIntegradorI.repository.PersonRepository;
 import com.proyIntUdeA.proyectoIntegradorI.repository.SessionRepository;
+import com.proyIntUdeA.proyectoIntegradorI.repository.SubjectRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
@@ -14,6 +16,8 @@ import java.util.stream.Collectors;
 public class SessionServiceImplementation implements SessionService{
 
     private SessionRepository sessionRepository;
+    private PersonRepository personRepository;
+    private SubjectRepository subjectRepository;
 
     @Override
     public Session saveSession(Session session) {
@@ -37,6 +41,23 @@ public class SessionServiceImplementation implements SessionService{
                 sessionEntity.getClass_date(),
                 sessionEntity.getClass_rate())).collect(Collectors.toList());
     }
+
+    public List<Session> getTutos() {
+        List<SessionEntity> sessionEntities = sessionRepository.findAll();
+
+        return sessionEntities.stream().map(sessionEntity -> new Session(
+                sessionEntity.getClass_id(),
+                sessionEntity.getClass_state(),
+                personRepository.findById(sessionEntity.getStudent_id()).get().getUser_name()+" "+
+                        personRepository.findById(sessionEntity.getStudent_id()).get().getUser_lastname(),
+                sessionEntity.getTutor_id(),
+                sessionEntity.getSubject_id(),
+                sessionEntity.getClass_topics(),
+                sessionEntity.getClass_date(),
+                sessionEntity.getClass_rate())).collect(Collectors.toList());
+    }
+
+
 
     @Override
     public Session getSessionById(long id) {

@@ -24,6 +24,11 @@ public class SessionController {
         return sessionService.getAllSessions();
     }
 
+    @GetMapping("/tutos")
+    public List<Session> getTutos(){
+        return sessionService.getTutos();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Session> getSessionById(@PathVariable("id") long id) {
         Session session = null;
