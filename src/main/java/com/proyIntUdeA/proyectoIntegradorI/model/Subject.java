@@ -11,5 +11,6 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Subject {
     private long subject_id;
+    private long degree_id;
     private String subject_name;
 }
