@@ -17,4 +17,5 @@ public class SubjectEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private long subject_id;
     private String subject_name;
+    private long degree_id;
 }
