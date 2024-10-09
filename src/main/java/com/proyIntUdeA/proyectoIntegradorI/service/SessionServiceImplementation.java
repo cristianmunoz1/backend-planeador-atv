@@ -11,13 +11,13 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
 @AllArgsConstructor
 @Service
-public class SessionServiceImplementation implements SessionService{
+public class SessionServiceImplementation implements SessionService {
 
     private SessionRepository sessionRepository;
     private PersonRepository personRepository;
-    private SubjectRepository subjectRepository;
 
     @Override
     public Session saveSession(Session session) {
@@ -48,7 +48,7 @@ public class SessionServiceImplementation implements SessionService{
         return sessionEntities.stream().map(sessionEntity -> new Session(
                 sessionEntity.getClass_id(),
                 sessionEntity.getClass_state(),
-                personRepository.findById(sessionEntity.getStudent_id()).get().getUsername()+" "+
+                personRepository.findById(sessionEntity.getStudent_id()).get().getUsername() + " " +
                         personRepository.findById(sessionEntity.getStudent_id()).get().getUser_lastname(),
                 sessionEntity.getTutor_id(),
                 sessionEntity.getSubject_id(),
@@ -56,8 +56,6 @@ public class SessionServiceImplementation implements SessionService{
                 sessionEntity.getClass_date(),
                 sessionEntity.getClass_rate())).collect(Collectors.toList());
     }
-
-
 
     @Override
     public Session getSessionById(long id) {
@@ -70,7 +68,7 @@ public class SessionServiceImplementation implements SessionService{
     @Override
     public boolean deleteSession(long id) {
         SessionEntity person = sessionRepository.findById(id).get();
-        sessionRepository. delete(person);
+        sessionRepository.delete(person);
         return true;
     }
 
