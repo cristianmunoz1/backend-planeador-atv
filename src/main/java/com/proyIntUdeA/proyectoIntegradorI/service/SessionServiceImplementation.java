@@ -48,7 +48,7 @@ public class SessionServiceImplementation implements SessionService{
         return sessionEntities.stream().map(sessionEntity -> new Session(
                 sessionEntity.getClass_id(),
                 sessionEntity.getClass_state(),
-                personRepository.findById(sessionEntity.getStudent_id()).get().getUser_name()+" "+
+                personRepository.findById(sessionEntity.getStudent_id()).get().getUsername()+" "+
                         personRepository.findById(sessionEntity.getStudent_id()).get().getUser_lastname(),
                 sessionEntity.getTutor_id(),
                 sessionEntity.getSubject_id(),

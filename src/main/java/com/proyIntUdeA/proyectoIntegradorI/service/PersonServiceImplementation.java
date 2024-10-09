@@ -10,8 +10,6 @@ import com.proyIntUdeA.proyectoIntegradorI.entity.PersonEntity;
 import com.proyIntUdeA.proyectoIntegradorI.model.Person;
 import com.proyIntUdeA.proyectoIntegradorI.repository.PersonRepository;
 
-import static java.util.Arrays.stream;
-
 @Service
 public class PersonServiceImplementation implements PersonService {
 
@@ -36,7 +34,7 @@ public class PersonServiceImplementation implements PersonService {
         return personEntities.stream().map(personEntity -> new Person(
                 personEntity.getUser_id(),
                 personEntity.getUser_id_type(),
-                personEntity.getUser_name(),
+                personEntity.getUsername(),
                 personEntity.getUser_lastname(),
                 personEntity.getUser_email(),
                 personEntity.getUser_password(),
@@ -69,7 +67,7 @@ public class PersonServiceImplementation implements PersonService {
         personEntity.setUser_department(person.getUser_department());
         personEntity.setUser_email(person.getUser_email());
         personEntity.setUser_lastname(person.getUser_lastname());
-        personEntity.setUser_name(person.getUser_name());
+        personEntity.setUsername(person.getUser_name());
         personEntity.setUser_password(person.getUser_password());
         personEntity.setUser_phone(person.getUser_phone());
         personEntity.setUser_phone(person.getUser_phone());

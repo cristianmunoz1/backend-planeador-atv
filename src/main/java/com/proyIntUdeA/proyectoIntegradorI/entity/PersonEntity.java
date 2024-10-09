@@ -3,6 +3,7 @@ package com.proyIntUdeA.proyectoIntegradorI.entity;
 import java.util.Collection;
 import java.util.List;
 
+import jakarta.persistence.Column;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -26,7 +27,8 @@ public class PersonEntity implements UserDetails {
     @Id
     private String user_id;
     private String user_id_type;
-    private String user_name;
+    @Column(name = "user_name", nullable = false)
+    private String username;
     private String user_lastname;
     private String user_email;
     private String user_password;
@@ -68,6 +70,6 @@ public class PersonEntity implements UserDetails {
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 }
