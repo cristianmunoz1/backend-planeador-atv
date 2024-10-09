@@ -36,7 +36,7 @@ public class PersonServiceImplementation implements PersonService {
                 personEntity.getUser_id_type(),
                 personEntity.getUsername(),
                 personEntity.getUser_lastname(),
-                personEntity.getUser_email(),
+                personEntity.getUserEmail(),
                 personEntity.getUser_password(),
                 personEntity.getUser_phone(),
                 personEntity.getUser_department(),
@@ -65,7 +65,7 @@ public class PersonServiceImplementation implements PersonService {
         PersonEntity personEntity = personRepository.findById(id).get();
         personEntity.setUser_city(person.getUser_city());
         personEntity.setUser_department(person.getUser_department());
-        personEntity.setUser_email(person.getUser_email());
+        personEntity.setUserEmail(person.getUser_email());
         personEntity.setUser_lastname(person.getUser_lastname());
         personEntity.setUsername(person.getUser_name());
         personEntity.setUser_password(person.getUser_password());

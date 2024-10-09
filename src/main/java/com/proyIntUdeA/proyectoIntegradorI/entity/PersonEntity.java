@@ -30,7 +30,7 @@ public class PersonEntity implements UserDetails {
     @Column(name = "user_name", nullable = false)
     private String username;
     private String user_lastname;
-    private String user_email;
+    private String userEmail;
     private String user_password;
     private String user_phone;
     private String user_department;
@@ -70,6 +70,6 @@ public class PersonEntity implements UserDetails {
 
     @Override
     public String getUsername() {
-        return username;
+        return userEmail;
     }
 }

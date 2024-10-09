@@ -23,7 +23,7 @@ public class AuthService {
 
     public AuthResponse login(LoginRequest request) {
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUser_email(), request.getUser_password()));
-        UserDetails user=personRepository.findByUsername(request.getUser_email()).orElseThrow();
+        UserDetails user=personRepository.findByUserEmail(request.getUser_email()).orElseThrow();
         System.out.println(request.getUser_email());
         System.out.println(request.getUser_password());
         String token=jwtService.getToken(user);
@@ -39,7 +39,7 @@ public class AuthService {
                 .user_id(request.getUser_id())
                 .user_id_type(request.getUser_id_type())
                 .user_lastname(request.getUser_lastname())
-                .user_email(request.getUser_email())
+                .userEmail(request.getUser_email())
                 .user_password(passwordEncoder.encode( request.getUser_password()))
                 .user_phone(request.getUser_phone())
                 .user_department(request.getUser_department())
