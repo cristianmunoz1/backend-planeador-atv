@@ -1,12 +1,27 @@
 package com.proyIntUdeA.proyectoIntegradorI.entity;
 
+import java.util.Collection;
+import java.util.List;
+
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "person")
-public class PersonEntity {
+public class PersonEntity implements UserDetails {
 
     @Id
     private String user_id;
@@ -21,110 +36,38 @@ public class PersonEntity {
     private String user_state;
     private String user_role;
 
-    public PersonEntity() {
+    @Override
+    public Collection<? extends GrantedAuthority> getAuthorities() {
+        return List.of(new SimpleGrantedAuthority(user_role));
     }
 
-    public PersonEntity(String user_id, String user_id_type, String user_name, String user_lastname, String user_email,
-            String user_password, String user_phone, String user_department, String user_city, String user_state,
-            String user_role) {
-        this.user_id = user_id;
-        this.user_id_type = user_id_type;
-        this.user_name = user_name;
-        this.user_lastname = user_lastname;
-        this.user_email = user_email;
-        this.user_password = user_password;
-        this.user_phone = user_phone;
-        this.user_department = user_department;
-        this.user_city = user_city;
-        this.user_state = user_state;
-        this.user_role = user_role;
+    @Override
+    public boolean isAccountNonExpired() {
+        return true;
     }
 
-    public String getUser_id() {
-        return user_id;
+    @Override
+    public boolean isAccountNonLocked() {
+        return true;
     }
 
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
+    @Override
+    public boolean isCredentialsNonExpired() {
+        return true;
     }
 
-    public String getUser_id_type() {
-        return user_id_type;
+    @Override
+    public boolean isEnabled() {
+        return true;
     }
 
-    public void setUser_id_type(String user_id_type) {
-        this.user_id_type = user_id_type;
+    @Override
+    public String getPassword() {
+        return null;
     }
 
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
-
-    public String getUser_lastname() {
-        return user_lastname;
-    }
-
-    public void setUser_lastname(String user_lastname) {
-        this.user_lastname = user_lastname;
-    }
-
-    public String getUser_email() {
-        return user_email;
-    }
-
-    public void setUser_email(String user_email) {
-        this.user_email = user_email;
-    }
-
-    public String getUser_password() {
-        return user_password;
-    }
-
-    public void setUser_password(String user_password) {
-        this.user_password = user_password;
-    }
-
-    public String getUser_phone() {
-        return user_phone;
-    }
-
-    public void setUser_phone(String user_phone) {
-        this.user_phone = user_phone;
-    }
-
-    public String getUser_department() {
-        return user_department;
-    }
-
-    public void setUser_department(String user_department) {
-        this.user_department = user_department;
-    }
-
-    public String getUser_city() {
-        return user_city;
-    }
-
-    public void setUser_city(String user_city) {
-        this.user_city = user_city;
-    }
-
-    public String getUser_state() {
-        return user_state;
-    }
-
-    public void setUser_state(String user_state) {
-        this.user_state = user_state;
-    }
-
-    public String getUser_role() {
-        return user_role;
-    }
-
-    public void setUser_role(String user_role) {
-        this.user_role = user_role;
+    @Override
+    public String getUsername() {
+        return null;
     }
 }

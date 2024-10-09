@@ -33,7 +33,7 @@ public class PersonServiceImplementation implements PersonService {
     public List<Person> getAllPersons() {
         List<PersonEntity> personEntities = personRepository.findAll();
 
-        List<Person> persons = personEntities.stream().map(personEntity -> new Person(
+        return personEntities.stream().map(personEntity -> new Person(
                 personEntity.getUser_id(),
                 personEntity.getUser_id_type(),
                 personEntity.getUser_name(),
@@ -44,9 +44,7 @@ public class PersonServiceImplementation implements PersonService {
                 personEntity.getUser_department(),
                 personEntity.getUser_city(),
                 personEntity.getUser_state(),
-                personEntity.getUser_role()
-                )).collect(Collectors.toList());
-        return persons;
+                personEntity.getUser_role())).collect(Collectors.toList());
     }
 
     @Override
@@ -60,7 +58,7 @@ public class PersonServiceImplementation implements PersonService {
     @Override
     public boolean deletePerson(String id) {
         PersonEntity person = personRepository.findById(id).get();
-        personRepository. delete(person);
+        personRepository.delete(person);
         return true;
     }
 
@@ -82,7 +80,7 @@ public class PersonServiceImplementation implements PersonService {
         return person;
     }
 
-    public List<Person> getAllTutors(){
+    public List<Person> getAllTutors() {
         List<Person> persons = getAllPersons();
         List<Person> tutors = persons
                 .stream()
