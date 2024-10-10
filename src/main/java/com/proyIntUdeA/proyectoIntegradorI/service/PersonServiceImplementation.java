@@ -10,8 +10,6 @@ import com.proyIntUdeA.proyectoIntegradorI.entity.PersonEntity;
 import com.proyIntUdeA.proyectoIntegradorI.model.Person;
 import com.proyIntUdeA.proyectoIntegradorI.repository.PersonRepository;
 
-import static java.util.Arrays.stream;
-
 @Service
 public class PersonServiceImplementation implements PersonService {
 
@@ -26,6 +24,8 @@ public class PersonServiceImplementation implements PersonService {
         PersonEntity personEntity = new PersonEntity();
         BeanUtils.copyProperties(person, personEntity);
         personRepository.save(personEntity);
+        System.out.println(person.getUser_firstname());
+        System.out.println(person.getUserEmail());
         return person;
     }
 
@@ -33,20 +33,18 @@ public class PersonServiceImplementation implements PersonService {
     public List<Person> getAllPersons() {
         List<PersonEntity> personEntities = personRepository.findAll();
 
-        List<Person> persons = personEntities.stream().map(personEntity -> new Person(
+        return personEntities.stream().map(personEntity -> new Person(
                 personEntity.getUser_id(),
                 personEntity.getUser_id_type(),
-                personEntity.getUser_name(),
+                personEntity.getUser_firstname(),
                 personEntity.getUser_lastname(),
-                personEntity.getUser_email(),
+                personEntity.getUserEmail(),
                 personEntity.getUser_password(),
                 personEntity.getUser_phone(),
                 personEntity.getUser_department(),
                 personEntity.getUser_city(),
                 personEntity.getUser_state(),
-                personEntity.getUser_role()
-                )).collect(Collectors.toList());
-        return persons;
+                personEntity.getUser_role())).collect(Collectors.toList());
     }
 
     @Override
@@ -60,7 +58,7 @@ public class PersonServiceImplementation implements PersonService {
     @Override
     public boolean deletePerson(String id) {
         PersonEntity person = personRepository.findById(id).get();
-        personRepository. delete(person);
+        personRepository.delete(person);
         return true;
     }
 
@@ -69,9 +67,9 @@ public class PersonServiceImplementation implements PersonService {
         PersonEntity personEntity = personRepository.findById(id).get();
         personEntity.setUser_city(person.getUser_city());
         personEntity.setUser_department(person.getUser_department());
-        personEntity.setUser_email(person.getUser_email());
+        personEntity.setUserEmail(person.getUserEmail());
         personEntity.setUser_lastname(person.getUser_lastname());
-        personEntity.setUser_name(person.getUser_name());
+        personEntity.setUser_firstname(person.getUser_firstname());
         personEntity.setUser_password(person.getUser_password());
         personEntity.setUser_phone(person.getUser_phone());
         personEntity.setUser_phone(person.getUser_phone());
@@ -82,7 +80,7 @@ public class PersonServiceImplementation implements PersonService {
         return person;
     }
 
-    public List<Person> getAllTutors(){
+    public List<Person> getAllTutors() {
         List<Person> persons = getAllPersons();
         List<Person> tutors = persons
                 .stream()
