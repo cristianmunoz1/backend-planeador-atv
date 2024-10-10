@@ -12,9 +12,9 @@ import lombok.Setter;
 public class Person {
     private String user_id;
     private String user_id_type;
-    private String user_name;
+    private String user_firstname;
     private String user_lastname;
-    private String user_email;
+    private String userEmail;
     private String user_password;
     private String user_phone;
     private String user_department;

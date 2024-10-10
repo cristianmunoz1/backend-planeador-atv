@@ -24,8 +24,8 @@ public class PersonServiceImplementation implements PersonService {
         PersonEntity personEntity = new PersonEntity();
         BeanUtils.copyProperties(person, personEntity);
         personRepository.save(personEntity);
-        System.out.println(person.getUser_name());
-        System.out.println(person.getUser_email());
+        System.out.println(person.getUser_firstname());
+        System.out.println(person.getUserEmail());
         return person;
     }
 
@@ -36,7 +36,7 @@ public class PersonServiceImplementation implements PersonService {
         return personEntities.stream().map(personEntity -> new Person(
                 personEntity.getUser_id(),
                 personEntity.getUser_id_type(),
-                personEntity.getUsername(),
+                personEntity.getUser_firstname(),
                 personEntity.getUser_lastname(),
                 personEntity.getUserEmail(),
                 personEntity.getUser_password(),
@@ -67,9 +67,9 @@ public class PersonServiceImplementation implements PersonService {
         PersonEntity personEntity = personRepository.findById(id).get();
         personEntity.setUser_city(person.getUser_city());
         personEntity.setUser_department(person.getUser_department());
-        personEntity.setUserEmail(person.getUser_email());
+        personEntity.setUserEmail(person.getUserEmail());
         personEntity.setUser_lastname(person.getUser_lastname());
-        personEntity.setUser_name(person.getUser_name());
+        personEntity.setUser_firstname(person.getUser_firstname());
         personEntity.setUser_password(person.getUser_password());
         personEntity.setUser_phone(person.getUser_phone());
         personEntity.setUser_phone(person.getUser_phone());

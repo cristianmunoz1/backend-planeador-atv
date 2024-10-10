@@ -34,11 +34,11 @@ public class AuthService {
 
     public AuthResponse register(RegisterRequest request) {
         PersonEntity person = PersonEntity.builder()
-                .user_name(request.getUser_name())
+                .user_firstname(request.getUser_firstname())
                 .user_id(request.getUser_id())
                 .user_id_type(request.getUser_id_type())
                 .user_lastname(request.getUser_lastname())
-                .userEmail(request.getUser_email())
+                .userEmail(request.getUserEmail())
                 .user_password(passwordEncoder.encode(request.getUser_password()))
                 .user_phone(request.getUser_phone())
                 .user_department(request.getUser_department())

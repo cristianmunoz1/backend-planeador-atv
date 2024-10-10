@@ -12,9 +12,9 @@ import lombok.NoArgsConstructor;
 public class RegisterRequest {
     String user_id;
     String user_id_type;
-    String user_name;
+    String user_firstname;
     String user_lastname;
-    String user_email;
+    String userEmail;
     String user_password;
     String user_phone;
     String user_department;
