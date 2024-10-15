@@ -16,4 +16,5 @@ public interface SessionService {
     Session updateSession(long id, Session session);
     List<Session> getAllPendingSessions();
     List<Session> getTutosTutor(String id);
+    List<Session> getTutosStudent(String id);
 }

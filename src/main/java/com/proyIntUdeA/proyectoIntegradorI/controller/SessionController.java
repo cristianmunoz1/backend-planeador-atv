@@ -62,4 +62,10 @@ public class SessionController {
         return sessionService.getTutosTutor(id);
     }
 
+    // Endpoint para traer las tutorías asignadas a un estudiante
+    @GetMapping("/sessionsstudent/{id}")
+    public List<Session> getTutosStudent(@PathVariable("id") String id) {
+        return sessionService.getTutosStudent(id);
+    }
+
 }
