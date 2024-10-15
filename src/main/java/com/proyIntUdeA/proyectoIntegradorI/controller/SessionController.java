@@ -51,4 +51,9 @@ public class SessionController {
         return ResponseEntity.ok(session);
     }
 
+    @GetMapping("/pool")
+    public List<Session> getPendingSessions() {
+        return sessionService.getAllPendingSessions();
+    }
+
 }

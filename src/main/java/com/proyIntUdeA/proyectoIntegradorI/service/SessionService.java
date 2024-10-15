@@ -14,4 +14,5 @@ public interface SessionService {
     boolean deleteSession(long id);
 
     Session updateSession(long id, Session session);
+    List<Session> getAllPendingSessions();
 }

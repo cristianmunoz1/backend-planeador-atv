@@ -86,4 +86,21 @@ public class SessionServiceImplementation implements SessionService {
         sessionRepository.save(sessionEntity);
         return session;
     }
+
+    @Override
+    public List<Session> getAllPendingSessions() {
+        List<SessionEntity> sessionEntities = sessionRepository.findAll();
+
+        return sessionEntities.stream().filter(sessionEntity -> "pendiente".equals(sessionEntity.getClass_state()))
+                .map(sessionEntity -> new Session(
+                sessionEntity.getClass_id(),
+                sessionEntity.getClass_state(),
+                personRepository.findById(sessionEntity.getStudent_id()).get().getUsername() + " " +
+                        personRepository.findById(sessionEntity.getStudent_id()).get().getUser_lastname(),
+                sessionEntity.getTutor_id(),
+                sessionEntity.getSubject_id(),
+                sessionEntity.getClass_topics(),
+                sessionEntity.getClass_date(),
+                sessionEntity.getClass_rate())).collect(Collectors.toList());
+    }
 }
