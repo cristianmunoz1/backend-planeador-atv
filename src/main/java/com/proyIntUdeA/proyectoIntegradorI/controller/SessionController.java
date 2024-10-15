@@ -56,4 +56,10 @@ public class SessionController {
         return sessionService.getAllPendingSessions();
     }
 
+    // Endpoint para traer las tutorías asignadas a un tutor por id
+    @GetMapping("/sessionstutor/{id}")
+    public List<Session> getTutosTutor(@PathVariable("id") String id) {
+        return sessionService.getTutosTutor(id);
+    }
+
 }

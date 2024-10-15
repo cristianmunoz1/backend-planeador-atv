@@ -10,6 +10,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @AllArgsConstructor
@@ -103,4 +104,26 @@ public class SessionServiceImplementation implements SessionService {
                 sessionEntity.getClass_date(),
                 sessionEntity.getClass_rate())).collect(Collectors.toList());
     }
+
+    // Sé que es confuso el nombre xd, así que es un metodo para traer todas las tutorías
+    // que están asignadas a un tutor pasándole su id
+    @Override
+    public List<Session> getTutosTutor(String id) {
+        List<SessionEntity> sessionEntities = sessionRepository.findAll();
+
+        return sessionEntities.stream()
+                .filter(sessionEntity -> id.equals(sessionEntity.getTutor_id()))
+                .map(sessionEntity -> new Session(
+                        sessionEntity.getClass_id(),
+                        sessionEntity.getClass_state(),
+                        personRepository.findById(sessionEntity.getStudent_id()).get().getUsername() + " " +
+                                personRepository.findById(sessionEntity.getStudent_id()).get().getUser_lastname(),
+                        sessionEntity.getTutor_id(),
+                        sessionEntity.getSubject_id(),
+                        sessionEntity.getClass_topics(),
+                        sessionEntity.getClass_date(),
+                        sessionEntity.getClass_rate()))
+                .collect(Collectors.toList());
+    }
+
 }
