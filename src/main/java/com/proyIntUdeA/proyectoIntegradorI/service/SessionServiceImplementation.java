@@ -19,6 +19,7 @@ public class SessionServiceImplementation implements SessionService {
 
     private SessionRepository sessionRepository;
     private PersonRepository personRepository;
+    private SubjectRepository subjectRepository;
 
     @Override
     public Session saveSession(Session session) {
@@ -137,7 +138,8 @@ public class SessionServiceImplementation implements SessionService {
                         sessionEntity.getClass_state(),
                         personRepository.findById(sessionEntity.getStudent_id()).get().getUsername() + " " +
                                 personRepository.findById(sessionEntity.getStudent_id()).get().getUser_lastname(),
-                        sessionEntity.getTutor_id(),
+                        personRepository.findById(sessionEntity.getTutor_id()).get().getUsername() + " " +
+                                personRepository.findById(sessionEntity.getTutor_id()).get().getUser_lastname(),
                         sessionEntity.getSubject_id(),
                         sessionEntity.getClass_topics(),
                         sessionEntity.getClass_date(),
