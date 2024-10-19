@@ -32,7 +32,7 @@ public class SubjectServiceImplementation implements SubjectService{
         return subjectEntities.stream().map(subjectEntity -> new Subject(
                 subjectEntity.getSubject_id(),
                 subjectEntity.getDegree_id(),
-                subjectEntity.getSubject_name())).collect(Collectors.toList());
+                subjectEntity.getSubject_name())).toList();
     }
 
     @Override

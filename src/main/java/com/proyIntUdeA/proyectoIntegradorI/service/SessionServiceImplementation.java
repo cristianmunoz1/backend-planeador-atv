@@ -41,7 +41,7 @@ public class SessionServiceImplementation implements SessionService {
                 sessionEntity.getSubject_id(),
                 sessionEntity.getClass_topics(),
                 sessionEntity.getClass_date(),
-                sessionEntity.getClass_rate())).collect(Collectors.toList());
+                sessionEntity.getClass_rate())).toList();
     }
 
     public List<Session> getTutos() {
@@ -56,7 +56,7 @@ public class SessionServiceImplementation implements SessionService {
                 sessionEntity.getSubject_id(),
                 sessionEntity.getClass_topics(),
                 sessionEntity.getClass_date(),
-                sessionEntity.getClass_rate())).collect(Collectors.toList());
+                sessionEntity.getClass_rate())).toList();
     }
 
     @Override
@@ -103,7 +103,7 @@ public class SessionServiceImplementation implements SessionService {
                 sessionEntity.getSubject_id(),
                 sessionEntity.getClass_topics(),
                 sessionEntity.getClass_date(),
-                sessionEntity.getClass_rate())).collect(Collectors.toList());
+                sessionEntity.getClass_rate())).toList();
     }
 
     // Sé que es confuso el nombre xd, así que es un metodo para traer todas las tutorías
@@ -124,7 +124,7 @@ public class SessionServiceImplementation implements SessionService {
                         sessionEntity.getClass_topics(),
                         sessionEntity.getClass_date(),
                         sessionEntity.getClass_rate()))
-                .collect(Collectors.toList());
+                .toList();
     }
 
     @Override
@@ -144,6 +144,6 @@ public class SessionServiceImplementation implements SessionService {
                         sessionEntity.getClass_topics(),
                         sessionEntity.getClass_date(),
                         sessionEntity.getClass_rate()))
-                .collect(Collectors.toList());
+                .toList();
     }
 }
