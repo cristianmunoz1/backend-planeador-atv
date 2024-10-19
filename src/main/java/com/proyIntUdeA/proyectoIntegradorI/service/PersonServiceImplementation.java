@@ -44,7 +44,7 @@ public class PersonServiceImplementation implements PersonService {
                 personEntity.getUser_department(),
                 personEntity.getUser_city(),
                 personEntity.getUser_state(),
-                personEntity.getUser_role())).collect(Collectors.toList());
+                personEntity.getUser_role())).toList();
     }
 
     @Override
@@ -82,10 +82,9 @@ public class PersonServiceImplementation implements PersonService {
 
     public List<Person> getAllTutors() {
         List<Person> persons = getAllPersons();
-        List<Person> tutors = persons
-                .stream()
+
+        return persons.stream()
                 .filter(person -> person.getUser_role().equals("Tutor"))
-                .collect(Collectors.toList());
-        return tutors;
+                .toList();
     }
 }

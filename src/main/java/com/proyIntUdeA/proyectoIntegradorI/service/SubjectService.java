@@ -1,6 +1,6 @@
 package com.proyIntUdeA.proyectoIntegradorI.service;
 
-import com.proyIntUdeA.proyectoIntegradorI.model.Person;
+
 import com.proyIntUdeA.proyectoIntegradorI.model.Subject;
 import org.springframework.stereotype.Service;
 
